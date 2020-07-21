@@ -34,7 +34,7 @@ function TeamsList(props) {
     <Container>
       <Grid container alignContent="space-between" spacing={5}>
         {teams.map((team) => (
-          <Grid key={team.id} item xs={12} md={6} lg={4} xl={3}>
+          <Grid key={team.id} item xs={12} sm={6} lg={4} xl={3}>
             <Link to={`/${team.teamName.toLowerCase()}`} style={{ textDecoration: 'none' }}>
             <TeamCard
               name={team.name}
