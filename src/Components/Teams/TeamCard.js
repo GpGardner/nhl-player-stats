@@ -38,7 +38,7 @@ export default function TeamCard(props) {
           </Typography>
           {conference} - {division}
         </CardContent>
-        <img src={require(`../../images/NHLTeamLogo/${image.replace(/ /g,"_")}.png`)} style={{marginLeft: "50%", transform: "translateX(-50%)"}}/>
+        <img src={require(`../../images/NHLTeamLogo/${image.replace(/ /g,"_")}.png`)} style={{marginLeft: "50%", transform: "translateX(-50%)", width: "125%"}}/>
       </CardActionArea>
       {/* <CardActions>
       </CardActions> */}
