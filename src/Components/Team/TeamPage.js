@@ -58,7 +58,7 @@ export default function TeamPage(props) {
         <TableBody>
           {roster.map((player) => (
             <TableRow key={player.person.id}>
-              <TableCell align="leftt">{player.jerseyNumber}</TableCell>
+              <TableCell align="left">{player.jerseyNumber}</TableCell>
               <TableCell component="th" scope="row">{player.person.fullName}</TableCell>
               <TableCell align="right">{player.position.type}</TableCell>
               <TableCell align="right">{player.position.name}</TableCell>
