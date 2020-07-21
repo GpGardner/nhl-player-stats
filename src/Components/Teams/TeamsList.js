@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 //Components
 import TeamCard from "./TeamCard";
 import {Link} from "react-router-dom"
+import Images from "../../images/images"
 //Material-UI
 import { makeStyles } from "@material-ui/core";
 import Grid from "@material-ui/core/Grid";
@@ -40,6 +41,7 @@ function TeamsList(props) {
               conference={team.conference.name}
               division={team.division.nameShort}
               website={team.officialSiteURL}
+              image={team.teamName.toLowerCase()}
             />
             </Link>
           </Grid>

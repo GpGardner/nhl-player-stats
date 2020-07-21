@@ -25,7 +25,9 @@ const useStyles = makeStyles({
 
 export default function TeamCard(props) {
   const classes = useStyles();
-  const {name, conference, division, website} = props;
+  const {name, conference, division, website, image} = props;
+
+  console.log(image)
 
   return (
     <Card className={classes.root}>
@@ -36,6 +38,7 @@ export default function TeamCard(props) {
           </Typography>
           {conference} - {division}
         </CardContent>
+        <img src={require(`../../images/NHLTeamLogo/${image.replace(/ /g,"_")}.png`)} style={{marginLeft: "50%", transform: "translateX(-50%)"}}/>
       </CardActionArea>
       {/* <CardActions>
       </CardActions> */}
