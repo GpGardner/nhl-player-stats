@@ -4,7 +4,7 @@ import TeamCard from "./TeamCard";
 //Material-UI
 import { makeStyles } from "@material-ui/core";
 import Grid from "@material-ui/core/Grid";
-import Container from "@material-ui/core/Container"
+import Container from "@material-ui/core/Container";
 // import Paper from "@material-ui/core/Paper"
 //Constant
 // import { DRAWER_WIDTH } from '../../CONSTANTS';
@@ -12,36 +12,37 @@ import Container from "@material-ui/core/Container"
 
 const useStyles = makeStyles((theme) => ({}));
 
-function TeamsList() {
-  const URL = `https://statsapi.web.nhl.com/api/v1/teams/`;
+function TeamsList(props) {
   // const classes = useStyles();
 
   const [teams, setTeams] = useState([]);
 
+  const URL = `https://statsapi.web.nhl.com/api/v1/teams/`;
   useEffect(() => {
     const callForTeams = async () => {
       const response = await fetch(URL);
       const data = await response.json();
+      console.log("Use Effect from TeamsList ran again.");
       setTeams(data.teams);
     };
     callForTeams();
   }, [URL]);
 
   return (
-		<Container>
-    <Grid container spacing={2}>
-      {teams.map((team) => (
-        <Grid key={team.id} alignContent="space-between" item xs={12} md={6} lg={4} xl={3}>
-          <TeamCard
-            name={team.name}
-            conference={team.conference.name}
-            division={team.division.nameShort}
-            website={team.officialSiteURL}
-          />
-        </Grid>
-      ))}
-    </Grid>
-		</Container>
+    <Container>
+      <Grid container alignContent="space-between" spacing={2}>
+        {teams.map((team) => (
+          <Grid key={team.id} item xs={12} md={6} lg={4} xl={3}>
+            <TeamCard
+              name={team.name}
+              conference={team.conference.name}
+              division={team.division.nameShort}
+              website={team.officialSiteURL}
+            />
+          </Grid>
+        ))}
+      </Grid>
+    </Container>
   );
 }
 
