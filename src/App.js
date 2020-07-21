@@ -1,24 +1,33 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+//Packages
+import {Switch, Route} from "react-router-dom";
+//Components
+import TeamsList from "./Components/Teams/TeamsList"
+import Navbar from "./Components/Navbar/Navbar"
+//Constants
+import {DRAWER_WIDTH} from "./CONSTANTS"
+//CSS
+
+//Material-UI
+import {makeStyles} from "@material-ui/core"
+
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+      paddingLeft: `${DRAWER_WIDTH}px`
+  }
+}));
 
 function App() {
+
+  const classes = useStyles();
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className={classes.root}>
+    <Navbar />
+    <Switch>
+      <Route exact path="/" render={routeProps => (<TeamsList />)}/>
+    </Switch>
     </div>
   );
 }
