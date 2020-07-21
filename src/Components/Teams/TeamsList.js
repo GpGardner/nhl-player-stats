@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 //Components
 import TeamCard from "./TeamCard";
+import {Link} from "react-router-dom"
 //Material-UI
 import { makeStyles } from "@material-ui/core";
 import Grid from "@material-ui/core/Grid";
@@ -33,12 +34,14 @@ function TeamsList(props) {
       <Grid container alignContent="space-between" spacing={2}>
         {teams.map((team) => (
           <Grid key={team.id} item xs={12} md={6} lg={4} xl={3}>
+            <Link to={`/${team.teamName.toLowerCase()}`} style={{ textDecoration: 'none' }}>
             <TeamCard
               name={team.name}
               conference={team.conference.name}
               division={team.division.nameShort}
               website={team.officialSiteURL}
             />
+            </Link>
           </Grid>
         ))}
       </Grid>

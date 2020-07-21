@@ -49,8 +49,8 @@ export default function TeamPage(props) {
       <Table className={classes.table} aria-label={`table for nhl team ${teamName}`}>
         <TableHead>
           <TableRow>
+            <TableCell align="left">Jersey #</TableCell>
             <TableCell>Player name</TableCell>
-            <TableCell align="right">Jersey #</TableCell>
             <TableCell align="right">Type</TableCell>
             <TableCell align="right">Position</TableCell>
           </TableRow>
@@ -58,8 +58,8 @@ export default function TeamPage(props) {
         <TableBody>
           {roster.map((player) => (
             <TableRow key={player.person.id}>
+              <TableCell align="leftt">{player.jerseyNumber}</TableCell>
               <TableCell component="th" scope="row">{player.person.fullName}</TableCell>
-              <TableCell align="right">{player.jerseyNumber}</TableCell>
               <TableCell align="right">{player.position.type}</TableCell>
               <TableCell align="right">{player.position.name}</TableCell>
             </TableRow>
