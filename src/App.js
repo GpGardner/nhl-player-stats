@@ -26,6 +26,9 @@ function App() {
     <div className={classes.root}>
     <Navbar />
     <Switch>
+      <Route exact path="/:team" render={routeProps => (<TeamPage
+        team={routeProps.match.params.id}
+      />)}/>
       <Route exact path="/" render={routeProps => (<TeamsList />)}/>
     </Switch>
     </div>
