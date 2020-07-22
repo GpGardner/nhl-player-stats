@@ -11,6 +11,9 @@ import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 import Container from "@material-ui/core/Container";
 
+//Components
+import {Link} from "react-router-dom"
+
 const useStyles = makeStyles({
   table: {
     minWidth: 650,
@@ -19,13 +22,14 @@ const useStyles = makeStyles({
 
 export default function TeamPage(props) {
   const classes = useStyles();
+  const [roster, setRoster] = useState([]);
 
   const { team } = props;
   const teamName = Object.keys(team).toString();
   const teamId = Object.values(team).toString();
 
-  const [roster, setRoster] = useState([]);
-
+  
+  
   useEffect(() => {
     const callForPlayers = async () => {
       const URL = `https://statsapi.web.nhl.com/api/v1/teams/${teamId}?expand=team.roster`;
@@ -35,8 +39,8 @@ export default function TeamPage(props) {
       setRoster(data.teams[0].roster.roster);
     };
     callForPlayers();
-  }, [teamId]);
-
+  }, [teamId]); 
+  
   return (
     <Container>
       <TableContainer component={Paper}>
@@ -47,16 +51,16 @@ export default function TeamPage(props) {
           <TableHead>
             <TableRow>
               <TableCell align="left">Jersey #</TableCell>
-              <TableCell>Player name</TableCell>
+              <TableCell align="left">Player name</TableCell>
               <TableCell align="right">Type</TableCell>
-              <TableCell align="right">Position</TableCell>
+              <TableCell align="right" >Position</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
             {roster.map((player) => (
-              <TableRow key={player.person.id}>
+              <TableRow key={player.person.id} component={Link} to={`/${teamName}/${player.person.fullName.toLowerCase().replace(/ /g,"_")}`} style={{textDecoration: "none"}}>
                 <TableCell align="left">{player.jerseyNumber}</TableCell>
-                <TableCell component="th" scope="row">
+                <TableCell align="left">
                   {player.person.fullName}
                 </TableCell>
                 <TableCell align="right">{player.position.type}</TableCell>
@@ -69,3 +73,5 @@ export default function TeamPage(props) {
     </Container>
   );
 }
+
+
