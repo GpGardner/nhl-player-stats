@@ -22,4 +22,6 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
+#my files
 images
+src/Components/Player/PlayerPage.js
