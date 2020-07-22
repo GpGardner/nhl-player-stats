@@ -58,7 +58,7 @@ export default function TeamPage(props) {
           </TableHead>
           <TableBody>
             {roster.map((player) => (
-              <TableRow key={player.person.id} component={Link} to={`/${teamName}/${player.person.fullName.toLowerCase().replace(/ /g,"_")}`} style={{textDecoration: "none"}}>
+              <TableRow key={player.person.id} component={Link} to={`/${teamName}/${player.person.id}`} style={{textDecoration: "none"}}>
                 <TableCell align="left">{player.jerseyNumber}</TableCell>
                 <TableCell align="left">
                   {player.person.fullName}
