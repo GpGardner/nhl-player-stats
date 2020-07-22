@@ -24,8 +24,6 @@ export default function TeamCard(props) {
   const classes = useStyles();
   const {name, conference, division, website, image} = props;
 
-  console.log(image)
-
   return (
     <Card className={classes.root}>
       <CardActionArea>
