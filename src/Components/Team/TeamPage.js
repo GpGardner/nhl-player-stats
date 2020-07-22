@@ -35,7 +35,7 @@ export default function TeamPage(props) {
       setRoster(data.teams[0].roster.roster);
     };
     callForPlayers();
-  }, [URL]);
+  }, [teamId]);
 
   return (
     <Container>

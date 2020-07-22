@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 //Packages
 import { Switch, Route } from "react-router-dom";
 //Components
@@ -19,7 +19,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function App() {
-  const URL = `https://statsapi.web.nhl.com/api/v1/teams/`;
   const classes = useStyles();
   const teams = [
     { devils: 1 },
