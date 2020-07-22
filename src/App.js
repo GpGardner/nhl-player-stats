@@ -11,6 +11,7 @@ import { DRAWER_WIDTH } from "./CONSTANTS";
 
 //Material-UI
 import { makeStyles } from "@material-ui/core";
+import PlayerPage from "./Components/Player/PlayerPage";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -60,12 +61,21 @@ function App() {
     });
   };
 
-  //
-
   return (
     <div className={classes.root}>
       <Navbar />
       <Switch>
+        <Route
+            exact
+            path="/:team/:playerId"
+            render={(routeProps) => (
+              <PlayerPage
+                team={findTeam(routeProps.match.params.team)}
+                playerId={routeProps.match.params.playerId}
+                {...routeProps}
+              />
+            )}
+          />
         <Route
           exact
           path="/:team"
