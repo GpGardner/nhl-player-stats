@@ -7,7 +7,18 @@ This project was created using :
 * graphjs
 * https://statsapi.web.nhl.com/api/v1/teams
 
-This site will not be deployed because of the the licensed API, but it was an incredible rewarding project.
+This site will not be deployed because of the the licensed API, but it was an incredibly rewarding project.
+
+#### TODOs
+
+- [x] main page with team images
+- [x] list of players with position information
+- [x] player page tracking basic stats
+- [x] graph representation of stats
+- [] 	change stats based on user input that are represented in graph
+- [] 	user input to include non NHL stats
+- []  theme of player/team page based on team colors
+- []  change type of graph to better represent displayed stats
 
 ### Home Page / Full Teams List 
 
@@ -25,15 +36,3 @@ This site will not be deployed because of the the licensed API, but it was an in
 ### Statistic for indiviual player
 
 ![Sidney Crosby Statistic](https://github.com/GpGardner/nhl-player-stats/blob/master/src/images/WebsiteImages/statisticsPage.png)
-
-
-#### TODOs
-
-- [x] main page with team images
-- [x] list of players with position information
-- [x] player page tracking basic stats
-- [x] graph representation of stats
-- [] 	change stats based on user input that are represented in graph
-- [] 	user input to include non NHL stats
-- []  theme of player/team page based on team colors
-- []  change type of graph to better represent displayed stats
