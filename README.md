@@ -11,4 +11,4 @@ This site will not be deployed because of the the licensed API, but it was an in
 
 ### Home Page / Full Teams List 
 
-
+![Home Page](https://github.com/GpGardner/nhl-player-stats/blob/master/src/images/WebsiteImages/fullTeamsList.png)
