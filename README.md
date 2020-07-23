@@ -13,12 +13,13 @@ This site will not be deployed because of the the licensed API, but it was an in
 
 - [x] main page with team images
 - [x] list of players with position information
+- [] sort list asc or dsc for based on each field
 - [x] player page tracking basic stats
 - [x] graph representation of stats
-- [] 	change stats based on user input that are represented in graph
-- [] 	user input to include non NHL stats
-- []  theme of player/team page based on team colors
-- []  change type of graph to better represent displayed stats
+- [] change stats based on user input that are represented in graph
+- [] user input to include non NHL stats
+- [] theme of player/team page based on team colors
+- [] change type of graph to better represent displayed stats
 
 ### Home Page / Full Teams List 
 
