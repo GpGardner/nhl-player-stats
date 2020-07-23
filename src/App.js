@@ -15,7 +15,9 @@ import PlayerPage from "./Components/Player/PlayerPage";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    paddingLeft: `${DRAWER_WIDTH}px`,
+    [theme.breakpoints.up('sm')]: {
+      paddingLeft: `${DRAWER_WIDTH}px`,
+    },
   },
 }));
 
