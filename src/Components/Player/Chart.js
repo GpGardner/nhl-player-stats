@@ -25,8 +25,7 @@ function Chart(props) {
 	});
 
 	seasons.forEach(season => season.replace(/(\d{4})/, "$1-"))
-	
-	console.log(Object.values(props));
+
 	
 	useEffect(() => {
 		setChartData({
