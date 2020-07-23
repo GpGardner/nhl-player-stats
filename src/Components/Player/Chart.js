@@ -15,7 +15,7 @@ function Chart(props) {
 	Object.values(props).map(season => {
 
 		if(season.league.name === "National Hockey League"){	
-			seasons.push(season.season.replace(/(\d{4})/, "$1-"))
+			seasons.push(season.season.replace(/(\d{4})/, ""))
 			goals.push(season.stat.goals)
 			assists.push(season.stat.assists);
 		}
@@ -43,7 +43,7 @@ function Chart(props) {
 				]
 			}
 		)
-	}, [])
+	},[])
 
 	
 
