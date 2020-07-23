@@ -10,7 +10,6 @@ import Container from "@material-ui/core/Container";
 import Dropdown from "../Dropdown/TeamsListSortBy";
 // import Paper from "@material-ui/core/Paper"
 //Constant
-// import { DRAWER_WIDTH } from '../../CONSTANTS';
 import { MARGIN_TOP } from "../../CONSTANTS"
 
 //CSS
