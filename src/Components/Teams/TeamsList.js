@@ -11,12 +11,18 @@ import Dropdown from "../Dropdown/TeamsListSortBy";
 // import Paper from "@material-ui/core/Paper"
 //Constant
 // import { DRAWER_WIDTH } from '../../CONSTANTS';
+import { MARGIN_TOP } from "../../CONSTANTS"
+
 //CSS
 
-const useStyles = makeStyles((theme) => ({}));
+const useStyles = makeStyles((theme) => ({
+  root: {
+    paddingTop: MARGIN_TOP
+  }
+}));
 
 function TeamsList(props) {
-  // const classes = useStyles();
+  const classes = useStyles();
 
   const [teams, setTeams] = useState([]);
   const [divisionSort, setDivisionSort] = useState("All");
@@ -50,7 +56,7 @@ function TeamsList(props) {
   };
 
   return (
-    <Container>
+    <Container className={classes.root}>
       <div>
         <Dropdown changeSort={handleChange} />
       </div>
