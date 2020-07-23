@@ -22,7 +22,7 @@ const useStyles = makeStyles({
 
 export default function TeamCard(props) {
   const classes = useStyles();
-  const {name, conference, division, website, image} = props;
+  const {name, conference, division, image} = props;
 
   return (
     <Card className={classes.root}>
