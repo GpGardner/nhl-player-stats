@@ -59,7 +59,7 @@ function TeamsList(props) {
           ? teams.map((team) => (
               <Grid key={`${team.id} - All`} item xs={12} sm={6} lg={4} xl={3}>
                 <Link
-                  to={`/${team.teamName.toLowerCase()}`}
+                  to={`/${team.teamName.toLowerCase().replace(/ /g,"_")}`}
                   style={{ textDecoration: "none" }}
                 >
                   <TeamCard
@@ -67,7 +67,7 @@ function TeamsList(props) {
                     conference={team.conference.name}
                     division={team.division.nameShort}
                     website={team.officialSiteURL}
-                    image={team.teamName.toLowerCase()}
+                    image={team.teamName.toLowerCase().replace(/ /g,"_")}
                   />
                 </Link>
               </Grid>
@@ -75,7 +75,7 @@ function TeamsList(props) {
           : filterDivision().map((team) => (
               <Grid key={`${team.id} - All`} item xs={12} sm={6} lg={4} xl={3}>
                 <Link
-                  to={`/${team.teamName.toLowerCase()}`}
+                  to={`/${team.teamName.toLowerCase().replace(/ /g,"_")}`}
                   style={{ textDecoration: "none" }}
                 >
                   <TeamCard
@@ -83,7 +83,7 @@ function TeamsList(props) {
                     conference={team.conference.name}
                     division={team.division.nameShort}
                     website={team.officialSiteURL}
-                    image={team.teamName.toLowerCase()}
+                    image={team.teamName.toLowerCase().replace(/ /g,"_")}
                   />
                 </Link>
               </Grid>
