@@ -14,7 +14,13 @@ import Container from "@material-ui/core/Container";
 //Components
 import {Link} from "react-router-dom"
 
+//Consts 
+import { MARGIN_TOP } from "../../CONSTANTS"
+
 const useStyles = makeStyles({
+  root: {
+    marginTop: MARGIN_TOP
+  },
   table: {
     minWidth: 650,
   },
@@ -42,7 +48,7 @@ export default function TeamPage(props) {
   }, [teamId]); 
   
   return (
-    <Container>
+    <Container className={classes.root}>
       <TableContainer component={Paper}>
         <Table
           className={classes.table}
