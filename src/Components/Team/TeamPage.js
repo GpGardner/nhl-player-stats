@@ -29,10 +29,13 @@ const useStyles = makeStyles({
 export default function TeamPage(props) {
   const classes = useStyles();
   const [roster, setRoster] = useState([]);
+  const [jerseySort, setJerseySort] = useState("")
 
   const { team } = props;
   const teamName = Object.keys(team).toString();
   const teamId = Object.values(team).toString();
+  const ASC = "ascending"
+  const DSC = "descending"
 
   
   
@@ -47,6 +50,22 @@ export default function TeamPage(props) {
     callForPlayers();
   }, [teamId]); 
   
+
+  const sortList = (e) => {
+    let sortArray = [...roster];
+    if(jerseySort === ""){
+      setJerseySort(DSC)
+      setRoster(sortArray.sort((a,b) => parseInt(a.jerseyNumber) < parseInt(b.jerseyNumber) ? -1 : 1 ));
+    }else if(jerseySort === ASC) {
+      setJerseySort(DSC)
+      setRoster(sortArray.sort((a,b) => parseInt(a.jerseyNumber) < parseInt(b.jerseyNumber) ? -1 : 1 ));
+    }else {
+      setJerseySort(ASC)
+      setRoster(sortArray.sort((a,b) => parseInt(a.jerseyNumber) < parseInt(b.jerseyNumber) ? 1 : -1 ));
+
+    }
+  }
+    
   return (
     <Container className={classes.root}>
       <TableContainer component={Paper}>
@@ -56,10 +75,10 @@ export default function TeamPage(props) {
         >
           <TableHead>
             <TableRow>
-              <TableCell align="left">Jersey #</TableCell>
+              <TableCell align="left" onClick={sortList}>Jersey #</TableCell>
               <TableCell align="left">Player name</TableCell>
               <TableCell align="right">Type</TableCell>
-              <TableCell align="right" >Position</TableCell>
+              <TableCell align="right">Position</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
