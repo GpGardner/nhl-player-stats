@@ -14,7 +14,7 @@ This site will not be deployed because of the the licensed API, but it was an in
 - [x] main page with team images
 - [x] list of players with position information
 - [] sort list asc or dsc for based on each field
-  * Jersey #
+  * Jersey # ✅
   * PlayerName
   * Position Type
   * Position
