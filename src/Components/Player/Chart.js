@@ -26,7 +26,6 @@ function Chart(props) {
 
 	seasons.forEach(season => season.replace(/(\d{4})/, "$1-"))
 
-	
 	useEffect(() => {
 		setChartData({
 				labels: [...seasons],
@@ -47,11 +46,9 @@ function Chart(props) {
 						backgroundColor: 'rgba(0,0, 255, 0.1'
 					}
 				]
-			}
-		)
+			})
 	},[])
 
-	
 
 	return (
 		<div>
