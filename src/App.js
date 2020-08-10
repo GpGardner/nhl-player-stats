@@ -3,7 +3,7 @@ import React from "react";
 import { Switch, Route } from "react-router-dom";
 //Components
 import TeamsList from "./Components/Teams/TeamsList";
-import TeamPage2 from "./Components/Team/TeamPage2";
+import TeamPage from "./Components/Team/TeamPage";
 import Navbar from "./Components/Navbar/Navbar";
 //Constants
 import { DRAWER_WIDTH } from "./CONSTANTS";
@@ -82,7 +82,7 @@ function App() {
           exact
           path="/:team"
           render={(routeProps) => (
-            <TeamPage2
+            <TeamPage
               team={findTeam(routeProps.match.params.team)}
               {...routeProps}
             />
