@@ -54,7 +54,7 @@ function stableSort(array, comparator) {
 const headCells = [
   { id: 'jerseyNumber', numeric: true, disablePadding: true, label: 'Jersey #' },
   { id: 'fullName', numeric: false, disablePadding: false, label: 'Name' },
-  { id: 'type', numeric: false, disablePadding: false, label: 'Type' },
+  { id: 'positionType', numeric: false, disablePadding: false, label: 'Type' },
   { id: 'position', numeric: false, disablePadding: false, label: 'Position' }
 ];
 
@@ -155,12 +155,29 @@ export default function TeamPage2(props) {
     const callForPlayers = async () => {
       const URL = `https://statsapi.web.nhl.com/api/v1/teams/${teamId}?expand=team.roster`;
       const response = await fetch(URL);
-      const data = await response.json();
-      console.log("Use Effect from TeamPage ran again.");
-      setRoster(data.teams[0].roster.roster);
+			const data = await response.json();
+			console.log("Use Effect from TeamPage ran again.");
+      setRoster(parsePlayers(data));
     };
     callForPlayers();
-  }, [teamId]);
+	}, [teamId]);
+	
+	const parsePlayers = (data) => {
+		const playerList = [];
+		console.log(data.teams[0].roster.roster.map((player, i) => {
+			const playerObj = {
+				id: player.person.id,
+				fullName :  player.person.fullName,
+				jerseyNumber : player.jerseyNumber < 10 ? parseInt(`0${player.jerseyNumber}`) : player.jerseyNumber,
+				positionType : player.position.type,
+				position: player.position.name
+			}
+
+			playerList.push(playerObj)
+
+		}));
+		return playerList;
+	}
 
   const handleRequestSort = (event, property) => {
     const isAsc = orderBy === property && order === 'asc';
@@ -236,7 +253,6 @@ export default function TeamPage2(props) {
             />
             <TableBody>
               {stableSort(roster, getComparator(order, orderBy))
-                .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                 .map((player, index) => {
                   const isItemSelected = isSelected(player.jerseyNumber);
                   const labelId = `enhanced-table-checkbox-${index}`;
@@ -248,8 +264,8 @@ export default function TeamPage2(props) {
                       role="checkbox"
                       aria-checked={isItemSelected}
                       tabIndex={-1}
-											key={player.person.id}
-											to={`/${teamName}/${player.person.id}`}
+											key={player.id}
+											to={`/${teamName}/${player.id}`}
 											selected={isItemSelected}
                     >
                       <TableCell padding="checkbox">
@@ -259,9 +275,9 @@ export default function TeamPage2(props) {
                         />
                       </TableCell>
                       <TableCell align="left">{player.jerseyNumber}</TableCell>
-                			<TableCell align="left">{player.person.fullName}</TableCell>
-                			<TableCell align="left">{player.position.type}</TableCell>
-                			<TableCell align="left">{player.position.name}</TableCell>
+                			<TableCell align="left">{player.fullName}</TableCell>
+                			<TableCell align="left">{player.positionType}</TableCell>
+                			<TableCell align="left">{player.position}</TableCell>
                     </TableRow>
                   );
                 })}
@@ -273,7 +289,7 @@ export default function TeamPage2(props) {
             </TableBody>
           </Table>
         </TableContainer>
-        <TablePagination
+        {/* <TablePagination
           rowsPerPageOptions={[5, 10, 25]}
           component="div"
           count={roster.length}
@@ -281,7 +297,7 @@ export default function TeamPage2(props) {
           page={page}
           onChangePage={handleChangePage}
           onChangeRowsPerPage={handleChangeRowsPerPage}
-        />
+        /> */}
       </Paper>
       <FormControlLabel
         control={<Switch checked={dense} onChange={handleChangeDense} />}
