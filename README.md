@@ -1,4 +1,4 @@
-![Project Depolyed](https://nhl-stats-page.herokuapp.com/islanders)
+[Project Depolyed](https://nhl-stats-page.herokuapp.com/islanders)
 
 # NHL STATS
 
