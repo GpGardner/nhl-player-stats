@@ -1,3 +1,5 @@
+![Project Depolyed](https://nhl-stats-page.herokuapp.com/islanders)
+
 # NHL STATS
 
 This project was created using : 
@@ -7,7 +9,7 @@ This project was created using :
 * graphjs
 * https://statsapi.web.nhl.com/api/v1/teams
 
-This site will not be deployed because of the the licensed API, but it was an incredibly rewarding project.
+
 
 #### TODOs
 
