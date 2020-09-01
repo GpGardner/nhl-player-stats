@@ -14,7 +14,9 @@ This project was created using :
 
 #### TODOs
 
-- [] add goalie statistics 
+- [] login/signup
+- [] track favorite players
+- [x] add goalie statistics 
 - [x] main page with team images
 - [x] list of players with position information
 - [] drop down menu with preview of statistics for each player
