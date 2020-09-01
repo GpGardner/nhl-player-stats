@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 
-//Constants 
-import { MARGIN_TOP } from "../../CONSTANTS"
+//Constants
+import { MARGIN_TOP } from "../../CONSTANTS";
 
 //Components
-import Chart from "./Chart"
+import PlayerChart from "./PlayerChart";
+import GoalieChart from "./GoalieChart";
 //Material UI
 import { makeStyles } from "@material-ui/core/styles";
 import Table from "@material-ui/core/Table";
@@ -19,8 +20,8 @@ import { Container } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    marginTop: MARGIN_TOP
-  }
+    marginTop: MARGIN_TOP,
+  },
 }));
 
 export default function PlayerPage(props) {
@@ -51,6 +52,8 @@ export default function PlayerPage(props) {
     callForPlayer();
   }, [playerId]);
 
+  console.log(statsRegularSeason);
+
   return (
     <Container className={classes.root}>
       {loading ? (
@@ -62,19 +65,33 @@ export default function PlayerPage(props) {
             {position.type} - {position.name}
           </Title>
 
+          {position.name === "Goalie" ? (
+            <GoalieChart playerStats={statsRegularSeason} />
+          ) : (
+            <PlayerChart playerStats={statsRegularSeason} />
+          )}
 
-          <Chart {...statsRegularSeason} />
-
-          <TableContainer component={Paper} style={{marginTop: "2%"}}>
+          <TableContainer component={Paper} style={{ marginTop: "2%" }}>
             <Table className={classes.table} aria-label="Player Stats Table">
               <TableHead>
                 <TableRow>
                   <TableCell>Team</TableCell>
                   <TableCell>Season</TableCell>
-                  <TableCell align="right">Games</TableCell>
-                  <TableCell align="right">Goals</TableCell>
-                  <TableCell align="right">Assists</TableCell>
-                  <TableCell align="right">Points</TableCell>
+                  {position.name === "Goalie" ? (
+                    <>
+                      <TableCell align="right">Games</TableCell>
+                      <TableCell align="right">Saves</TableCell>
+                      <TableCell align="right">Total Shots Faced</TableCell>
+                      <TableCell align="right">Shut Outs</TableCell>
+                    </>
+                  ) : (
+                    <>
+                      <TableCell align="right">Games</TableCell>
+                      <TableCell align="right">Goals</TableCell>
+                      <TableCell align="right">Assists</TableCell>
+                      <TableCell align="right">Points</TableCell>
+                    </>
+                  )}
                 </TableRow>
               </TableHead>
               <TableBody>
@@ -84,10 +101,29 @@ export default function PlayerPage(props) {
                     <TableCell>
                       {season.season.replace(/^(.{4})/, "$1-")}
                     </TableCell>
-                    <TableCell align="right">{season.stat.games}</TableCell>
-                    <TableCell align="right">{season.stat.goals}</TableCell>
-                    <TableCell align="right">{season.stat.assists}</TableCell>
-                    <TableCell align="right">{season.stat.points}</TableCell>
+                    {position.name === "Goalie" ? (
+                      <>
+                        <TableCell align="right">{season.stat.games}</TableCell>
+                        <TableCell align="right">{season.stat.saves}</TableCell>
+                        <TableCell align="right">
+                          {season.stat.shotsAgainst}
+                        </TableCell>
+                        <TableCell align="right">
+                          {season.stat.shutouts}
+                        </TableCell>
+                      </>
+                    ) : (
+                      <>
+                        <TableCell align="right">{season.stat.games}</TableCell>
+                        <TableCell align="right">{season.stat.goals}</TableCell>
+                        <TableCell align="right">
+                          {season.stat.assists}
+                        </TableCell>
+                        <TableCell align="right">
+                          {season.stat.points}
+                        </TableCell>
+                      </>
+                    )}
                   </TableRow>
                 ))}
               </TableBody>

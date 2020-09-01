@@ -9,11 +9,15 @@ function Chart(props) {
 
 	const [ chartData, setChartData ] = useState({});
 
+	const { playerStats } = props;
+
 	let seasons = [];
 	let goals = [];
 	let assists = [];
 	let games = [];
-	Object.values(props).map(season => {
+
+	
+	Object.values(playerStats).map(season => {
 
 		if(season.league.name === "National Hockey League"){	
 			seasons.push(season.season.replace(/(\d{4})/, ""))
