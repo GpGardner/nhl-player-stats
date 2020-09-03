@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import {chooseBackgroundColor} from '../../helper'
 
 //Chart JS
 import { Bar } from 'react-chartjs-2';
@@ -37,17 +38,17 @@ function Chart(props) {
 					{
 						label: 'Goals',
 						data: [...goals],
-						backgroundColor: 'rgba(0, 255, 0, 0.6)'
+						backgroundColor: chooseBackgroundColor()
 					},
 					{
 						label: 'Assists',
 						data: [...assists],
-						backgroundColor: 'rgba(255, 0, 0, 0.6)'
+						backgroundColor: chooseBackgroundColor()
 					},
 					{
 						label: 'Games',
 						data: [...games],
-						backgroundColor: 'rgba(0,0, 255, 0.1'
+						backgroundColor: chooseBackgroundColor()
 					}
 				]
 			})

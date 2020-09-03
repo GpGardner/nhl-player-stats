@@ -1,5 +1,5 @@
 export const chooseBackgroundColor = () => {
-	return `rgba(${randomNumber(200)}, ${randomNumber(200)}, ${randomNumber(200)}, 0.9)`
+	return `rgba(${randomNumber(200)}, ${randomNumber(200)}, ${randomNumber(200)}, 0.7)`
 }
 
 export const randomNumber = (val) => {

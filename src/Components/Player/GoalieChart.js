@@ -1,77 +1,187 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect } from "react";
+import { chooseBackgroundColor } from "../../helper";
 
 //Chart JS
-import { Bar } from 'react-chartjs-2';
-
-
+import { Bar } from "react-chartjs-2";
 
 function Chart(props) {
+  const [chartData, setChartData] = useState({});
 
-	const [ chartData, setChartData ] = useState({});
+  const { playerStats } = props;
 
-	const { playerStats } = props;
+  let seasonsArray = [];
+  let savesArray = [];
+  let shotsAgainstArray = [];
+  let shutoutsArray = [];
+  let gamesArray = [];
+  let lossesArray = [];
+  let evenSavesArray = [];
+  let evenShotsArray = [];
+  let evenStrengthSavePercentageArray = [];
+  let gamesStartedArray = [];
+  let goalAgainstAverageArray = [];
+  let goalsAgainstArray = [];
+  let powerPlaySavePercentageArray = [];
+  let powerPlaySavesArray = [];
+  let powerPlayShotsArray = [];
+  let savePercentageArray = [];
+  let shortHandedSavePercentageArray = [];
+  let shortHandedSavesArray = [];
+  let shortHandedShotsArray = [];
+  let tiesArray = [];
+  let timeOnIceArray = [];
+  let winsArray = [];
 
-	let seasons = [];
-	let saves = [];
-	let shotsAgainst = [];
-	let shutouts = [];
-	let games = [];
+  Object.values(playerStats).map((season) => {
+    let {
+      saves,
+      shotsAgainst,
+      shutouts,
+      losses,
+      games,
+      evenSaves,
+      evenShots,
+      evenStrengthSavePercentage,
+      gamesStarted,
+      goalAgainstAverage,
+      goalsAgainst,
+      powerPlaySavePercentage,
+      powerPlaySaves,
+      powerPlayShots,
+      savePercentage,
+      shortHandedSavePercentage,
+      shortHandedSaves,
+      shortHandedShots,
+      ties,
+      timeOnIce,
+      wins,
+    } = season.stat;
 
-	
-	Object.values(playerStats).map(season => {
+    if (season.league.name === "National Hockey League") {
+      seasonsArray.push(season.season.replace(/(\d{4})/, ""));
+      savesArray.push(saves);
+      shotsAgainstArray.push(shotsAgainst);
+      shutoutsArray.push(shutouts);
+      gamesArray.push(games);
+      lossesArray.push(losses);
+      evenSavesArray.push(evenSaves);
+      evenShotsArray.push(evenShots);
+      evenStrengthSavePercentageArray.push(evenStrengthSavePercentage);
+      gamesStartedArray.push(gamesStarted);
+      goalAgainstAverageArray.push(goalAgainstAverage);
+      goalsAgainstArray.push(goalsAgainst);
+      powerPlaySavePercentageArray.push(powerPlaySavePercentage);
+      powerPlaySavesArray.push(powerPlaySaves);
+      powerPlayShotsArray.push(powerPlayShots);
+      savePercentageArray.push(savePercentage);
+      shortHandedSavePercentageArray.push(shortHandedSavePercentage);
+      shortHandedSavesArray.push(shortHandedSaves);
+      shortHandedShotsArray.push(shortHandedShots);
+      tiesArray.push(ties);
+      timeOnIceArray.push(timeOnIce);
+      winsArray.push(wins);
+    }
+  });
 
-		if(season.league.name === "National Hockey League"){	
-			seasons.push(season.season.replace(/(\d{4})/, ""))
-			saves.push(season.stat.saves)
-			shotsAgainst.push(season.stat.shotsAgainst);
-			shutouts.push(season.stat.shutouts)
-			games.push(season.stat.games);
-		}
+  useEffect(() => {
+    setChartData({
+      labels: [...seasonsArray],
+      datasets: [
+        {
+          label: "Saves",
+          data: [...savesArray],
+          backgroundColor: chooseBackgroundColor(),
+        },
+        {
+          label: "Shots Against",
+          data: [...shotsAgainstArray],
+          backgroundColor: chooseBackgroundColor(),
+        },
+        {
+          label: "Games",
+          data: [...gamesArray],
+          backgroundColor: chooseBackgroundColor(),
+        },
+        {
+          label: "Even Saves",
+          data: [...evenSavesArray],
+          backgroundColor: chooseBackgroundColor(),
+        },
+        {
+          label: "Even Shots",
+          data: [...evenShotsArray],
+          backgroundColor: chooseBackgroundColor(),
+        },
+        {
+          label: "Even Strength Save Percentage",
+          data: [...evenStrengthSavePercentageArray],
+          backgroundColor: chooseBackgroundColor(),
+        },
+        {
+          label: "Games Started",
+          data: [...gamesStartedArray],
+          backgroundColor: chooseBackgroundColor(),
+        },
+        {
+          label: "Goals Against Average",
+          data: [...goalAgainstAverageArray],
+          backgroundColor: chooseBackgroundColor(),
+        },
+        {
+          label: "Goals Against",
+          data: [...goalsAgainstArray],
+          backgroundColor: chooseBackgroundColor(),
+        },
+        {
+          label: "Losses",
+          data: [...lossesArray],
+          backgroundColor: chooseBackgroundColor(),
+        },
+        {
+          label: "Power Play Save Percentage",
+          data: [...powerPlaySavePercentageArray],
+          backgroundColor: chooseBackgroundColor(),
+        },
+        {
+          label: "Power Play Saves",
+          data: [...powerPlaySavesArray],
+          backgroundColor: chooseBackgroundColor(),
+        },
+        {
+          label: "Power Play Shots",
+          data: [...powerPlayShotsArray],
+          backgroundColor: chooseBackgroundColor(),
+        },
+        {
+          label: "Save Percentage",
+          data: [...savePercentageArray],
+          backgroundColor: chooseBackgroundColor(),
+        },
+        {
+          label: "Saves",
+          data: [...savesArray],
+          backgroundColor: chooseBackgroundColor(),
+        },
+      ],
+    });
+  }, []);
 
-	});
-
-	seasons.forEach(season => season.replace(/(\d{4})/, "$1-"))
-
-	useEffect(() => {
-		setChartData({
-				labels: [...seasons],
-				datasets: [
-					{
-						label: 'saves',
-						data: [...saves],
-						backgroundColor: 'rgba(0, 255, 0, 0.6)'
-					},
-					{
-						label: 'shotsAgainst',
-						data: [...shotsAgainst],
-						backgroundColor: 'rgba(255, 0, 0, 0.6)'
-					},
-					{
-						label: 'Games',
-						data: [...games],
-						backgroundColor: 'rgba(0,0, 255, 0.1'
-					}
-				]
-			})
-	},[])
-
-
-	return (
-		<div>
-				<Bar 
-					data={chartData}
-					width={100}
-					height={50}
-					options={{
-						title:{
-							display: true,
-							text: "Saves, Shots Against, and Total games Average for NHL Career",
-							fontSize: 25
-						}
-					}}
-				/>
-		</div>
-	)
+  return (
+    <div>
+      <Bar
+        data={chartData}
+        width={100}
+        height={50}
+        options={{
+          title: {
+            display: true,
+            text: "NHL Career",
+            fontSize: 25,
+          },
+        }}
+      />
+    </div>
+  );
 }
 
-export default Chart
+export default Chart;
