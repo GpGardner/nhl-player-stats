@@ -9,8 +9,8 @@ function Chart(props) {
 
   const { playerStats } = props;
 
-  let seasonsArray = [];
-  let savesArray = [];
+  let seasonsArray = [];    
+  let savesArray = [];      
   let shotsAgainstArray = [];
   let shutoutsArray = [];
   let gamesArray = [];
