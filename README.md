@@ -15,7 +15,8 @@ This project was created using :
 #### TODOs
 
 - [] login/signup
-- [] track favorite players
+- [] track favorite players in sidebar
+- [] add links to sidebar to go back to team
 - [x] add goalie statistics 
 - [x] main page with team images
 - [x] list of players with position information
