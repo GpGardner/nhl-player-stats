@@ -42,7 +42,6 @@ export default function PlayerPage(props) {
       const URL = `https://cors-anywhere.herokuapp.com/https://statsapi.web.nhl.com/api/v1/people/${playerId}?expand=person.stats&stats=yearByYear,yearByYearPlayoffs,careerRegularSeason&expand=stats.team`;
       const response = await fetch(URL);
       const data = await response.json();
-      console.log("Use Effect from PlayerPage ran again.");
       setTeamName(data.people[0].currentTeam.name);
       setPosition(data.people[0].primaryPosition);
       setStatsRegularSeason(data.people[0].stats[0].splits);
@@ -51,8 +50,6 @@ export default function PlayerPage(props) {
     };
     callForPlayer();
   }, [playerId]);
-
-  console.log(statsRegularSeason);
 
   return (
     <Container className={classes.root}>

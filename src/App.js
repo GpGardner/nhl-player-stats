@@ -15,7 +15,7 @@ import PlayerPage from "./Components/Player/PlayerPage";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    [theme.breakpoints.up('sm')]: {
+    [theme.breakpoints.up("sm")]: {
       paddingLeft: `${DRAWER_WIDTH}px`,
     },
   },
@@ -65,30 +65,47 @@ function App() {
 
   return (
     <div className={classes.root}>
-      <Navbar />
       <Switch>
         <Route
-            exact
-            path="/:team/:playerId"
-            render={(routeProps) => (
+          exact
+          path="/:team/:playerId"
+          render={(routeProps) => (
+            <>
+              <Navbar
+                displayTeam={true}
+                team={findTeam(routeProps.match.params.team)}
+              />
               <PlayerPage
                 team={findTeam(routeProps.match.params.team)}
                 playerId={routeProps.match.params.playerId}
                 {...routeProps}
               />
-            )}
-          />
+            </>
+          )}
+        />
         <Route
           exact
           path="/:team"
           render={(routeProps) => (
-            <TeamPage
-              team={findTeam(routeProps.match.params.team)}
-              {...routeProps}
-            />
+            <>
+              <Navbar />
+              <TeamPage
+                team={findTeam(routeProps.match.params.team)}
+                {...routeProps}
+              />
+            </>
           )}
         />
-        <Route exact path="/" render={(routeProps) => <TeamsList />} />
+        <Route
+          exact
+          path="/"
+          render={(routeProps) => (
+            <>
+              <Navbar />
+              <TeamsList />
+            </>
+          )}
+        />
       </Switch>
     </div>
   );

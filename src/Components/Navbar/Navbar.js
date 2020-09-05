@@ -1,4 +1,5 @@
 import React from "react";
+import { capitalize } from "../../helper";
 
 //Components
 import { Link } from "react-router-dom";
@@ -16,6 +17,7 @@ import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import HomeIcon from "@material-ui/icons/Home";
 import MenuIcon from "@material-ui/icons/Menu";
+import AcUnitIcon from '@material-ui/icons/AcUnit';
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
@@ -56,7 +58,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function ResponsiveDrawer(props) {
-  const { window } = props;
+  const { window, displayTeam, team } = props;
   const classes = useStyles();
   const theme = useTheme();
   const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -65,6 +67,7 @@ function ResponsiveDrawer(props) {
     setMobileOpen(!mobileOpen);
   };
 
+  
   const drawer = (
     <div>
       <div className={classes.toolbar} />
@@ -78,8 +81,18 @@ function ResponsiveDrawer(props) {
         </ListItem>
       </List>
       <Divider />
-      <List>
-      </List>
+      {displayTeam ? (
+        <List>
+          <ListItem button component={Link} to={`/${Object.keys(team)}`}>
+            <ListItemIcon>
+              <AcUnitIcon />
+            </ListItemIcon>
+            <ListItemText>{capitalize(Object.keys(team))}</ListItemText>
+          </ListItem>
+        </List>
+      ) : (
+        <List></List>
+      )}
     </div>
   );
 

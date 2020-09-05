@@ -5,3 +5,8 @@ export const chooseBackgroundColor = () => {
 export const randomNumber = (val) => {
 	return Math.floor(Math.random()* val);
 }
+
+export const capitalize = (val) => {
+	let word = val.toString();
+	return word[0].toUpperCase() + word.substring(1);	
+}

@@ -143,7 +143,8 @@ export default function TeamPage2(props) {
 	const [rowsPerPage, setRowsPerPage] = useState(5);
 	const [roster, setRoster] = useState([]);
 
-	const { team } = props;
+  const { team } = props;
+  console.log(props);
   const teamName = Object.keys(team).toString();
   const teamId = Object.values(team).toString();
 
