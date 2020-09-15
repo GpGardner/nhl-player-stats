@@ -18,7 +18,7 @@ import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import HomeIcon from "@material-ui/icons/Home";
 import MenuIcon from "@material-ui/icons/Menu";
-import AcUnitIcon from '@material-ui/icons/AcUnit';
+import AcUnitIcon from "@material-ui/icons/AcUnit";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
@@ -69,9 +69,9 @@ function ResponsiveDrawer(props) {
     const callForPlayers = async () => {
       const response = await axios.get("http://localhost:5000/players");
       setFavoritePlayers([...favoritePlayers, response.data]);
-    }
+    };
     callForPlayers();
-  }, [])
+  }, []);
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
@@ -79,7 +79,6 @@ function ResponsiveDrawer(props) {
 
   console.log(favoritePlayers);
 
-  
   const drawer = (
     <div>
       <div className={classes.toolbar} />
@@ -105,17 +104,26 @@ function ResponsiveDrawer(props) {
       ) : (
         <List></List>
       )}
+      <ListItemText>Favorite Players -</ListItemText>
+
       {favoritePlayers ? (
-        favoritePlayers?.map(player => (
-        <List>
-        <ListItem button component={Link} to={`/${player.team}/${player.id}`}>
-          <ListItemText>{player.name}</ListItemText>
-        </ListItem>
-      </List>
-      ))) : (
+        favoritePlayers?.map((player) => (
+          <>
+            <List>
+              <ListItem
+                button
+                component={Link}
+                to={`/${player.team}/${player.id}`}
+              >
+                <ListItemText>{player.name}</ListItemText>
+              </ListItem>
+            </List>
+            <Divider />
+          </>
+        ))
+      ) : (
         <List></List>
       )}
-
     </div>
   );
 
