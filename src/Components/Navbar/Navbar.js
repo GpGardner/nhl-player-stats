@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { capitalize } from "../../helper";
+import axios from "axios";
 
 //Components
 import { Link } from "react-router-dom";
@@ -61,11 +62,22 @@ function ResponsiveDrawer(props) {
   const { window, displayTeam, team } = props;
   const classes = useStyles();
   const theme = useTheme();
-  const [mobileOpen, setMobileOpen] = React.useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const [favoritePlayers, setFavoritePlayers] = useState([]);
+
+  useEffect(() => {
+    const callForPlayers = async () => {
+      const response = await axios.get("http://localhost:5000/players");
+      setFavoritePlayers([...favoritePlayers, response.data]);
+    }
+    callForPlayers();
+  }, [])
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
+
+  console.log(favoritePlayers);
 
   
   const drawer = (
@@ -93,6 +105,17 @@ function ResponsiveDrawer(props) {
       ) : (
         <List></List>
       )}
+      {favoritePlayers ? (
+        favoritePlayers?.map(player => (
+        <List>
+        <ListItem button component={Link} to={`/${player.team}/${player.id}`}>
+          <ListItemText>{player.name}</ListItemText>
+        </ListItem>
+      </List>
+      ))) : (
+        <List></List>
+      )}
+
     </div>
   );
 
