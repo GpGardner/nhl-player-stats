@@ -68,7 +68,7 @@ function ResponsiveDrawer(props) {
   useEffect(() => {
     const callForPlayers = async () => {
       const response = await axios.get("http://localhost:5000/players");
-      setFavoritePlayers([...favoritePlayers, response.data]);
+      setFavoritePlayers(...favoritePlayers, response.data);
     };
     callForPlayers();
   }, []);
