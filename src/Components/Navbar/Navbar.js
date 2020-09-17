@@ -65,10 +65,11 @@ function ResponsiveDrawer(props) {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [favoritePlayers, setFavoritePlayers] = useState([]);
 
-  const URL = "https://nhlfavoriteplayerlist.herokuapp.com/players"
+  const URL = "https://nhlfavoriteplayerlist.herokuapp.com/players";
 
   useEffect(() => {
     const callForPlayers = async () => {
+      console.log(`calling to ${URL}`);
       const response = await axios.get(URL);
       setFavoritePlayers(...favoritePlayers, response.data);
     };
