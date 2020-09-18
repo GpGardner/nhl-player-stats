@@ -22,6 +22,7 @@ import AcUnitIcon from "@material-ui/icons/AcUnit";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
+import StarIcon from "@material-ui/icons/Star";
 
 const drawerWidth = 240;
 
@@ -95,6 +96,7 @@ function ResponsiveDrawer(props) {
         </ListItem>
       </List>
       <Divider />
+
       {displayTeam ? (
         <List>
           <ListItem button component={Link} to={`/${Object.keys(team)}`}>
@@ -107,7 +109,8 @@ function ResponsiveDrawer(props) {
       ) : (
         <List></List>
       )}
-      <ListItemText>Favorite Players -</ListItemText>
+
+      <Divider />
 
       {favoritePlayers ? (
         favoritePlayers?.map((player) => (
@@ -118,15 +121,18 @@ function ResponsiveDrawer(props) {
                 component={Link}
                 to={`/${player.team}/${player.id}`}
               >
+                <ListItemIcon>
+                  <StarIcon />
+                </ListItemIcon>
                 <ListItemText>{player.name}</ListItemText>
               </ListItem>
             </List>
-            <Divider />
           </>
         ))
       ) : (
         <List></List>
       )}
+      <Divider />
     </div>
   );
 
