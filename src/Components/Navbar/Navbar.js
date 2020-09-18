@@ -18,7 +18,7 @@ import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import HomeIcon from "@material-ui/icons/Home";
 import MenuIcon from "@material-ui/icons/Menu";
-import AcUnitIcon from "@material-ui/icons/AcUnit";
+import GroupIcon from '@material-ui/icons/Group';
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
@@ -57,6 +57,9 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
     padding: theme.spacing(3),
   },
+  starColor: {
+    color: "gold",
+  }
 }));
 
 function ResponsiveDrawer(props) {
@@ -101,7 +104,7 @@ function ResponsiveDrawer(props) {
         <List>
           <ListItem button component={Link} to={`/${Object.keys(team)}`}>
             <ListItemIcon>
-              <AcUnitIcon />
+              <GroupIcon />
             </ListItemIcon>
             <ListItemText>{capitalize(Object.keys(team))}</ListItemText>
           </ListItem>
@@ -122,7 +125,7 @@ function ResponsiveDrawer(props) {
                 to={`/${player.team}/${player.id}`}
               >
                 <ListItemIcon>
-                  <StarIcon />
+                  <StarIcon className={classes.starColor}/>
                 </ListItemIcon>
                 <ListItemText>{player.name}</ListItemText>
               </ListItem>
