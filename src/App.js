@@ -74,6 +74,7 @@ function App() {
               <Navbar
                 displayTeam={true}
                 team={findTeam(routeProps.match.params.team)}
+                playerPage={true}
               />
               <PlayerPage
                 team={findTeam(routeProps.match.params.team)}

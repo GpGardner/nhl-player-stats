@@ -63,7 +63,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function ResponsiveDrawer(props) {
-  const { window, displayTeam, team } = props;
+  const { window, displayTeam, team, playerPage } = props;
   const classes = useStyles();
   const theme = useTheme();
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -83,8 +83,6 @@ function ResponsiveDrawer(props) {
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
-
-  console.log(favoritePlayers);
 
   const drawer = (
     <div>
@@ -115,7 +113,7 @@ function ResponsiveDrawer(props) {
 
       <Divider />
 
-      {favoritePlayers ? (
+      {favoritePlayers && !playerPage ? (
         favoritePlayers?.map((player) => (
           <>
             <List>
