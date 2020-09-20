@@ -18,7 +18,7 @@ import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import HomeIcon from "@material-ui/icons/Home";
 import MenuIcon from "@material-ui/icons/Menu";
-import GroupIcon from '@material-ui/icons/Group';
+import GroupIcon from "@material-ui/icons/Group";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
@@ -59,7 +59,7 @@ const useStyles = makeStyles((theme) => ({
   },
   starColor: {
     color: "gold",
-  }
+  },
 }));
 
 function ResponsiveDrawer(props) {
@@ -99,19 +99,20 @@ function ResponsiveDrawer(props) {
       <Divider />
 
       {displayTeam ? (
-        <List>
-          <ListItem button component={Link} to={`/${Object.keys(team)}`}>
-            <ListItemIcon>
-              <GroupIcon />
-            </ListItemIcon>
-            <ListItemText>{capitalize(Object.keys(team))}</ListItemText>
-          </ListItem>
-        </List>
+        <>
+          <List>
+            <ListItem button component={Link} to={`/${Object.keys(team)}`}>
+              <ListItemIcon>
+                <GroupIcon />
+              </ListItemIcon>
+              <ListItemText>{capitalize(Object.keys(team))}</ListItemText>
+            </ListItem>
+          </List>
+          <Divider />
+        </>
       ) : (
         <List></List>
       )}
-
-      <Divider />
 
       {favoritePlayers && !playerPage ? (
         favoritePlayers?.map((player) => (
@@ -123,7 +124,7 @@ function ResponsiveDrawer(props) {
                 to={`/${player.team}/${player.id}`}
               >
                 <ListItemIcon>
-                  <StarIcon className={classes.starColor}/>
+                  <StarIcon className={classes.starColor} />
                 </ListItemIcon>
                 <ListItemText>{player.name}</ListItemText>
               </ListItem>
@@ -133,7 +134,6 @@ function ResponsiveDrawer(props) {
       ) : (
         <List></List>
       )}
-      {!playerPage && <Divider />}
     </div>
   );
 
