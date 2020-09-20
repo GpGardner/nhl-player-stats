@@ -133,7 +133,7 @@ function ResponsiveDrawer(props) {
       ) : (
         <List></List>
       )}
-      <Divider />
+      {!playerPage && <Divider />}
     </div>
   );
 
