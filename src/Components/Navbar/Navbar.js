@@ -85,8 +85,6 @@ function ResponsiveDrawer(props) {
     setMobileOpen(!mobileOpen);
   };
 
-  console.log(typeof Object.keys(team))
-
   const drawer = (
     <div>
       <div className={classes.toolbar} />
