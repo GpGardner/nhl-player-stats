@@ -68,6 +68,7 @@ function ResponsiveDrawer(props) {
   const theme = useTheme();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [favoritePlayers, setFavoritePlayers] = useState([]);
+  const [teamName, setTeamName] = useState('');
 
   const URL = "https://nhlfavoriteplayerlist.herokuapp.com/api/favoriteplayers";
 
@@ -83,6 +84,8 @@ function ResponsiveDrawer(props) {
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
+
+  console.log(typeof Object.keys(team))
 
   const drawer = (
     <div>
@@ -101,11 +104,11 @@ function ResponsiveDrawer(props) {
       {displayTeam ? (
         <>
           <List>
-            <ListItem button component={Link} to={`/${Object.keys(team)}`}>
+            <ListItem button component={Link} to={`/${Object.keys(team).toString()}`}>
               <ListItemIcon>
                 <GroupIcon />
               </ListItemIcon>
-              <ListItemText>{capitalize(Object.keys(team))}</ListItemText>
+              <ListItemText>{capitalize(Object.keys(team).toString().replace(/_/," "))}</ListItemText>
             </ListItem>
           </List>
           <Divider />
