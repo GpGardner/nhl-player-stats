@@ -234,7 +234,7 @@ function Chart(props) {
         options={{
           title: {
             display: true,
-            text: "Goals and Assists for NHL Career",
+            text: "NHL Career Statistics",
             fontSize: 25,
           },
         }}
