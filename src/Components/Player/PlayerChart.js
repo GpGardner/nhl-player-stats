@@ -6,9 +6,8 @@ import { Bar } from "react-chartjs-2";
 
 function Chart(props) {
   const [chartData, setChartData] = useState({});
-  const [statsType, setStatsType] = useState("basic");
 
-  const { playerStats } = props;
+  const { playerStats, statsType } = props;
 
   let seasonsArray = [];
   let assistsArray = [];
@@ -223,7 +222,7 @@ function Chart(props) {
         ]
       })}
     console.log(chartData);
-  }, []);
+  }, [statsType]);
 
   return (
     <div>

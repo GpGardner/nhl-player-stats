@@ -15,12 +15,21 @@ import TableCell from "@material-ui/core/TableCell";
 import TableContainer from "@material-ui/core/TableContainer";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
+import FormControl from "@material-ui/core/FormControl";
+import InputLabel from "@material-ui/core/InputLabel";
+import MenuItem from "@material-ui/core/MenuItem";
+import FormHelperText from "@material-ui/core/FormHelperText";
+import Select from "@material-ui/core/Select";
 import Paper from "@material-ui/core/Paper";
 import { Container } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   root: {
     marginTop: MARGIN_TOP,
+  },
+  formControl: {
+    margin: theme.spacing(1),
+    minWidth: 120,
   },
 }));
 
@@ -36,6 +45,8 @@ export default function PlayerPage(props) {
   const [position, setPosition] = useState("");
   const [statsRegularSeason, setStatsRegularSeason] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [statsType, setStatsType] = useState("basic");
+
 
   useEffect(() => {
     const callForPlayer = async () => {
@@ -51,6 +62,10 @@ export default function PlayerPage(props) {
     callForPlayer();
   }, [playerId]);
 
+  const handleChange = (event) => {
+    setStatsType(event.target.value);
+  };
+
   return (
     <Container className={classes.root}>
       {loading ? (
@@ -62,10 +77,25 @@ export default function PlayerPage(props) {
             {position.type} - {position.name}
           </Title>
 
+          <FormControl className={classes.formControl}>
+            <InputLabel id="demo-simple-select-helper-label">Stats Type</InputLabel>
+            <Select
+              labelId="demo-simple-select-helper-label"
+              id="demo-simple-select-helper"
+              value={statsType}
+              onChange={handleChange}
+            >
+              <MenuItem value={"basic"}>Basic</MenuItem>
+              <MenuItem value={"even"}>Even Strength</MenuItem>
+              <MenuItem value={"power"}>Power Play</MenuItem>
+              <MenuItem value={"short"}>Short Handed</MenuItem>
+            </Select>
+          </FormControl>
+
           {position.name === "Goalie" ? (
-            <GoalieChart playerStats={statsRegularSeason} />
+            <GoalieChart playerStats={statsRegularSeason} statsType={statsType} />
           ) : (
-            <PlayerChart playerStats={statsRegularSeason} />
+            <PlayerChart playerStats={statsRegularSeason} statsType={statsType}/>
           )}
 
           <TableContainer component={Paper} style={{ marginTop: "2%" }}>
