@@ -33,6 +33,7 @@ This project was created using :
 - [] user input to include non NHL stats
 - [] theme of player/team page based on team colors
 - [] change type of graph to better represent displayed stats
+- [] mobile friendly
 
 ### Home Page / Full Teams List 
 
