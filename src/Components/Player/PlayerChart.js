@@ -197,11 +197,6 @@ function Chart(props) {
             data: [...powerPlayTimeOnIceArray],
             backgroundColor: chooseBackgroundColor(),
           },
-          {
-            label: "SHG",
-            data: [...shortHandedGoalsArray],
-            backgroundColor: chooseBackgroundColor(),
-          },
         ],
       });
     }
@@ -217,6 +212,11 @@ function Chart(props) {
           {
             label: "SH Time",
             data: [...shortHandedTimeOnIceArray],
+            backgroundColor: chooseBackgroundColor(),
+          },
+          {
+            label: "SHG",
+            data: [...shortHandedGoalsArray],
             backgroundColor: chooseBackgroundColor(),
           },
         ]
