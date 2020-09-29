@@ -9,8 +9,8 @@ function Chart(props) {
 
   const { playerStats } = props;
 
-  let seasonsArray = [];    
-  let savesArray = [];      
+  let seasonsArray = [];
+  let savesArray = [];
   let shotsAgainstArray = [];
   let shutoutsArray = [];
   let gamesArray = [];
@@ -84,86 +84,88 @@ function Chart(props) {
   });
 
   useEffect(() => {
-    setChartData({
-      labels: [...seasonsArray],
-      datasets: [
-        {
-          label: "Saves",
-          data: [...savesArray],
-          backgroundColor: chooseBackgroundColor(),
-        },
-        {
-          label: "Shots Against",
-          data: [...shotsAgainstArray],
-          backgroundColor: chooseBackgroundColor(),
-        },
-        {
-          label: "Games",
-          data: [...gamesArray],
-          backgroundColor: chooseBackgroundColor(),
-        },
-        {
-          label: "Even Saves",
-          data: [...evenSavesArray],
-          backgroundColor: chooseBackgroundColor(),
-        },
-        {
-          label: "Even Shots",
-          data: [...evenShotsArray],
-          backgroundColor: chooseBackgroundColor(),
-        },
-        {
-          label: "Even Strength Save Percentage",
-          data: [...evenStrengthSavePercentageArray],
-          backgroundColor: chooseBackgroundColor(),
-        },
-        {
-          label: "Games Started",
-          data: [...gamesStartedArray],
-          backgroundColor: chooseBackgroundColor(),
-        },
-        {
-          label: "Goals Against Average",
-          data: [...goalAgainstAverageArray],
-          backgroundColor: chooseBackgroundColor(),
-        },
-        {
-          label: "Goals Against",
-          data: [...goalsAgainstArray],
-          backgroundColor: chooseBackgroundColor(),
-        },
-        {
-          label: "Losses",
-          data: [...lossesArray],
-          backgroundColor: chooseBackgroundColor(),
-        },
-        {
-          label: "Power Play Save Percentage",
-          data: [...powerPlaySavePercentageArray],
-          backgroundColor: chooseBackgroundColor(),
-        },
-        {
-          label: "Power Play Saves",
-          data: [...powerPlaySavesArray],
-          backgroundColor: chooseBackgroundColor(),
-        },
-        {
-          label: "Power Play Shots",
-          data: [...powerPlayShotsArray],
-          backgroundColor: chooseBackgroundColor(),
-        },
-        {
-          label: "Save Percentage",
-          data: [...savePercentageArray],
-          backgroundColor: chooseBackgroundColor(),
-        },
-        {
-          label: "Saves",
-          data: [...savesArray],
-          backgroundColor: chooseBackgroundColor(),
-        },
-      ],
-    });
+    if (statsType === "basic") {
+      setChartData({
+        labels: [...seasonsArray],
+        datasets: [
+          {
+            label: "Saves",
+            data: [...savesArray],
+            backgroundColor: chooseBackgroundColor(),
+          },
+          {
+            label: "Shots Against",
+            data: [...shotsAgainstArray],
+            backgroundColor: chooseBackgroundColor(),
+          },
+          {
+            label: "Even Saves",
+            data: [...evenSavesArray],
+            backgroundColor: chooseBackgroundColor(),
+          },
+          {
+            label: "Even Shots",
+            data: [...evenShotsArray],
+            backgroundColor: chooseBackgroundColor(),
+          },
+        ],
+      });
+    }
+    if (statsType === "power") {
+      setChartData({
+        labels: [...seasonsArray],
+        datasets: [
+          {
+            label: "Power Play Save Percentage",
+            data: [...powerPlaySavePercentageArray],
+            backgroundColor: chooseBackgroundColor(),
+          },
+          {
+            label: "Power Play Saves",
+            data: [...powerPlaySavesArray],
+            backgroundColor: chooseBackgroundColor(),
+          },
+          {
+            label: "Power Play Shots",
+            data: [...powerPlayShotsArray],
+            backgroundColor: chooseBackgroundColor(),
+          },
+        ],
+      });
+    }
+
+    if (statsType === "even") {
+      setChartData({
+        labels: [...seasonsArray],
+        datasets: [
+          {
+            label: "Games",
+            data: [...gamesArray],
+            backgroundColor: chooseBackgroundColor(),
+          },
+          {
+            label: "Games Started",
+            data: [...gamesStartedArray],
+            backgroundColor: chooseBackgroundColor(),
+          },
+          {
+            label: "Goals Against Average",
+            data: [...goalAgainstAverageArray],
+            backgroundColor: chooseBackgroundColor(),
+          },
+          {
+            label: "Goals Against",
+            data: [...goalsAgainstArray],
+            backgroundColor: chooseBackgroundColor(),
+          },
+          {
+            label: "Even Strength Save Percentage",
+            data: [...evenStrengthSavePercentageArray],
+            backgroundColor: chooseBackgroundColor(),
+          },
+        ],
+      });
+    }
   }, []);
 
   return (
@@ -185,3 +187,14 @@ function Chart(props) {
 }
 
 export default Chart;
+
+
+// {
+
+// {
+//   label: "Losses",
+//   data: [...lossesArray],
+//   backgroundColor: chooseBackgroundColor(),
+// },
+
+// ],

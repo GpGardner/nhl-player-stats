@@ -47,7 +47,6 @@ export default function PlayerPage(props) {
   const [loading, setLoading] = useState(true);
   const [statsType, setStatsType] = useState("basic");
 
-
   useEffect(() => {
     const callForPlayer = async () => {
       const URL = `https://cors-anywhere.herokuapp.com/https://statsapi.web.nhl.com/api/v1/people/${playerId}?expand=person.stats&stats=yearByYear,yearByYearPlayoffs,careerRegularSeason&expand=stats.team`;
@@ -77,25 +76,51 @@ export default function PlayerPage(props) {
             {position.type} - {position.name}
           </Title>
 
-          <FormControl className={classes.formControl}>
-            <InputLabel id="demo-simple-select-helper-label">Stats Type</InputLabel>
-            <Select
-              labelId="demo-simple-select-helper-label"
-              id="demo-simple-select-helper"
-              value={statsType}
-              onChange={handleChange}
-            >
-              <MenuItem value={"basic"}>Basic</MenuItem>
-              <MenuItem value={"even"}>Even Strength</MenuItem>
-              <MenuItem value={"power"}>Power Play</MenuItem>
-              <MenuItem value={"short"}>Short Handed</MenuItem>
-            </Select>
-          </FormControl>
+          {position.name === "Goalie" ? (
+            <FormControl className={classes.formControl}>
+              <InputLabel id="demo-simple-select-helper-label">
+                Stats Type
+              </InputLabel>
+              <Select
+                labelId="demo-simple-select-helper-label"
+                id="demo-simple-select-helper"
+                value={statsType}
+                onChange={handleChange}
+              >
+                <MenuItem value={"basic"}>Basic</MenuItem>
+                <MenuItem value={"even"}>Even Strength</MenuItem>
+                <MenuItem value={"power"}>Power Play</MenuItem>
+              </Select>
+            </FormControl>
+          ) : (
+            <FormControl className={classes.formControl}>
+              <InputLabel id="demo-simple-select-helper-label">
+                Stats Type
+              </InputLabel>
+              <Select
+                labelId="demo-simple-select-helper-label"
+                id="demo-simple-select-helper"
+                value={statsType}
+                onChange={handleChange}
+              >
+                <MenuItem value={"basic"}>Basic</MenuItem>
+                <MenuItem value={"even"}>Even Strength</MenuItem>
+                <MenuItem value={"power"}>Power Play</MenuItem>
+                <MenuItem value={"short"}>Short Handed</MenuItem>
+              </Select>
+            </FormControl>
+          )}
 
           {position.name === "Goalie" ? (
-            <GoalieChart playerStats={statsRegularSeason} statsType={statsType} />
+            <GoalieChart
+              playerStats={statsRegularSeason}
+              statsType={statsType}
+            />
           ) : (
-            <PlayerChart playerStats={statsRegularSeason} statsType={statsType}/>
+            <PlayerChart
+              playerStats={statsRegularSeason}
+              statsType={statsType}
+            />
           )}
 
           <TableContainer component={Paper} style={{ marginTop: "2%" }}>
