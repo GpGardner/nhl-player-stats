@@ -108,6 +108,11 @@ function Chart(props) {
             data: [...evenShotsArray],
             backgroundColor: chooseBackgroundColor(),
           },
+          {
+            label: "Losses",
+            data: [...lossesArray],
+            backgroundColor: chooseBackgroundColor(),
+          },
         ],
       });
     }
@@ -187,14 +192,3 @@ function Chart(props) {
 }
 
 export default Chart;
-
-
-// {
-
-// {
-//   label: "Losses",
-//   data: [...lossesArray],
-//   backgroundColor: chooseBackgroundColor(),
-// },
-
-// ],
