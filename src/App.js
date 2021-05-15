@@ -1,21 +1,21 @@
-import React from "react";
+import React from 'react';
 //Packages
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route } from 'react-router-dom';
 //Components
-import TeamsList from "./Components/Teams/TeamsList";
-import TeamPage from "./Components/Team/TeamPage";
-import Navbar from "./Components/Navbar/Navbar";
+import TeamsList from './Components/Teams/TeamsList';
+import TeamPage from './Components/Team/TeamPage';
+import Navbar from './Components/Navbar/Navbar';
 //Constants
-import { DRAWER_WIDTH } from "./CONSTANTS";
+import { DRAWER_WIDTH } from './CONSTANTS';
 //CSS
 
 //Material-UI
-import { makeStyles } from "@material-ui/core";
-import PlayerPage from "./Components/Player/PlayerPage";
+import { makeStyles } from '@material-ui/core';
+import PlayerPage from './Components/Player/PlayerPage';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    [theme.breakpoints.up("sm")]: {
+    [theme.breakpoints.up('sm')]: {
       paddingLeft: `${DRAWER_WIDTH}px`,
     },
   },
@@ -55,6 +55,7 @@ function App() {
     { jets: 52 },
     { coyotes: 53 },
     { golden_knights: 54 },
+    { kraken: 55 },
   ];
 
   const findTeam = (value) => {
